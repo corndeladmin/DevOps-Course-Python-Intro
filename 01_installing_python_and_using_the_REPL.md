@@ -42,7 +42,7 @@ Let's start out by installing Python.
   - Make sure to select the "Add Python to PATH" option when installing (see screenshot below).
   - This will make it easier to use Python from the command line.
 
-![Python Install Options](../01 - General Purpose Coding/Images/python-windows-installer.png)
+![Python Install Options](Images/python-windows-installer.png)
 
 - Once the installer has completed, you should be able to open a terminal and run `python --version` to check that Python has been installed properly.
 
