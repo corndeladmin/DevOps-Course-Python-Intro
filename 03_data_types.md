@@ -125,7 +125,7 @@ True
 
 ## Text (strings)
 
-A text value is known as a **string** (or abbreviated to `str`). To declare a string literal, you simply wrap the text in quotation marks. You can use single or double quotes - the only difference is the ease of including quotation marks inside the text itself. If you want to include the same type of quotation mark as part of the text value, you need to "escape" it with a backslash.
+A text value is known as a **string** (or abbreviated to `str`). To create a string, just write some text wrapped inside quotation marks, like `"Hello"`. This is called a **string literal** (a "literal" just means "what you'd need to type at the REPL or in code to get that value" - so `"Apple"` is the literal for the string "Apple", `4` is the literal for the integer 4, and you'll see later in this document list literals `[1, 2, 3]` and dictionary literals `{ name: 'Joseph' }`). You can use single or double quotes to make your string - the only difference is the ease of including quotation marks inside the text itself. If you want to include the same type of quotation mark as part of the text value, you need to "escape" it with a backslash.
 
 ```python
 >>> "example text" == 'example text'
