@@ -2,7 +2,7 @@
 
 Welcome to Python!
 
-Python is designed to be easy to pick up but even so, learning a programming language can be difficult. Compared to the course material in Aptem, this mini course is focused on:
+Python is designed to be comparatively easy to pick up but even so, learning a programming language can be difficult. Compared to the course material in Aptem, this mini course is focused on:
 
 - Explaining new topics in greater detail and compared to familiar concepts.
 - More examples for each topic.
@@ -10,7 +10,7 @@ Python is designed to be easy to pick up but even so, learning a programming lan
 
 The aim is to make Python more approachable for everyone, even those without any programming experience.
 
-After this course you should feel confident using Python and have a solid understanding of its core concepts. The material available in Aptem will provide more detail in some areas, but here we will master the basics.
+After this course you should feel confident using Python and have a solid understanding of its core concepts. The material available in Aptem will provide more detail in some areas, and some longer exercises, but here we will master the basics.
 
 Click on Chapter 1 to get started:
 
@@ -20,4 +20,5 @@ Click on Chapter 1 to get started:
   - [Chapter 2B: Assignment Operators](./02B_assignment_operators.md)
 - [Chapter 3: Data Types](./03_data_types.md)
 - [Chapter 4: Functions](./04_functions.md)
-- Chapters 5+ coming soon
+- [Chapters 5: Control Flow](./05_control_flow.md)
+- Chapters 6+ coming soon

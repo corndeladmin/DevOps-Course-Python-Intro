@@ -46,6 +46,42 @@ Hello, world!
 'Hello, world!'
 ```
 
+### Comments
+
+When you start writing files, you will inevitably come across code comments. Some text starting with `#` is a "comment". It doesn't actually do anything - it just tells the reader something interesting. Try it out with a file like this:
+
+```python
+# I am a comment
+# print('this will not print')
+
+print('this will print') # comment at end of line
+```
+
+In a well-written codebase there shouldn't be much need for code comments, as the code should generally speak for itself. We describe that as "self-documenting" code. 
+
+Bear in mind that comments don't just take time to write. The cost is ongoing:
+- They obscure the code / take time to read
+- They need to be kept up to date
+- They lie (it's always a risk even if you try to keep them accurate)
+
+Examples of bad comments:
+
+```python
+# x is cost per item
+x = 10.99
+# print cost per item
+print(x)
+```
+
+The need for a comment is often an indication that the code should be improved instead, until it becomes self-documenting and a code comment would just repeat the code. That said, comments can certainly be useful. There are still plenty of reasons to write one. In short, good comments explain **why** the code is the way it is, rather than how it works.
+
+For example:
+- Working around surprising behaviour or a bug in another tool
+- Explaining why something is not implemented yet
+- Justifying use of a particular algorithm for performance reasons
+- Citation or a link to a useful reference
+- A slightly special case is documentation for a library or API, where the consumer is unable/unwilling to look at the code. Python has [docstrings](https://www.python.org/dev/peps/pep-0257/) for this purpose.
+
 ## What is a function?
 
 We've learnt about some of the basic components of Python code, but to go from a simple program to more complex behaviour, we need to start breaking up that program into meaningful blocks. Functions will let us structure our code in a way that is easier to understand, and also easier to update.
@@ -80,20 +116,7 @@ def hello_world():
 hello_world()
 ```
 
-Note that a function cannot be empty. If the function is totally empty, the file will fail to run with an "IndentationError". But maybe you want to come back and fill it in later? In that case, there's a keyword `pass` that does nothing and just acts as a placeholder. 
-
 Try defining and calling some functions.
-
-```python
-# Not implemented yet
-def do_nothing():
-    pass
-
-do_nothing()
-```
-
-> A line starting with `#` is a "comment". It doesn't actually do anything - it just tells the reader something interesting. In a well-written codebase there shouldn't be much need for code comments, as the code should speak for itself. We describe that as "self-documenting" code. The need for a comment is often an indication that the code could be written better instead (that's an example of what's known as a "code smell").
-> The cost of writing code comments is ongoing - they obscure the code and need to be kept up to date - so self-documenting code is preferable. That said, they can be useful, especially for generating documentation of libraries or APIs, anything where the consumer might be unable/unwilling to look at the code.
 
 ## Methods
 
@@ -112,7 +135,7 @@ Some methods might modify the object instead of just returning a value. We will 
 
 ### Exercise 4.1
 
-Lists have a `sort` method that sorts the list from lowest value to highest. It does not return anything. In the REPL, run the line below to create a list and assign it to a variable.
+Lists have a `sort` method, which reorders the list from lowest value to highest. It modifies the list, and does not return anything. In the REPL, run the line below to create a list and assign it to a variable.
 
 ```
 >>> my_list = [1, 4, 5, 2, 3]
@@ -174,6 +197,8 @@ def get_total_interest(initial_loan, interest_rate, number_of_years):
 interest = get_total_interest(1000, 1.05, 10)
 print(interest)
 ```
+
+You could have multiple return statements when you have some logic to decide which line gets executed. We will see some examples of this next chapter.
 
 ## Practice exercises
 
@@ -322,18 +347,6 @@ my_sandwich = make_a_sandwich('cheese')
 
 </details>
 
-## An aside
-
-During the course or outside it, you will eventually come across code that looks like the following:
-
-```python
-@example_decorator
-def do_something():
-    pass
-```
-
-The first line is using a **decorator** on the function below. The above code won't actually work because "example_decorator" isn't defined, but is to illustrate how it looks. The decorator transforms the function in some way. You won't need to define your own decorators on this course but you will use some.
-
 ## Summary
 
 We've reached the end of chapter 4, and at this point you should know:
@@ -342,3 +355,64 @@ We've reached the end of chapter 4, and at this point you should know:
 - How to invoke functions, including passing in arguments
 
 Next up is [Chapter 5: Control Flow](./05_control_flow.md) - running code only when a condition is met.
+
+See below for some extra points regarding functions in Python:
+
+## Some extras
+
+### Functions in the REPL
+
+While you'll definitely want to write longer scripts in a file, you can still experiment with functions in the REPL if you wish:
+- Write your `def` line as normal
+- The prompt will change from `>>>` to `...` when you are "inside" the function, but you still need to start each line with some spaces. Be consistent with how many spaces you use for the indentation.
+- When you have finished defining the function, hit enter with a totally blank line to exit the function and you will see the prompt return to `>>>`.
+
+For example:
+
+```
+>>> def example():
+...   print('Indented with two spaces')
+...   print('Also indented')
+...
+>>> example()
+Indented with two spaces
+Also indented
+```
+
+### Empty functions
+
+Note that a function cannot be empty. If the function is totally empty, the file will fail to run with an "IndentationError". But maybe you want to come back and fill it in later? In that case, there's a keyword `pass` that does nothing and just acts as a placeholder. 
+
+```python
+def do_nothing():
+    pass
+
+do_nothing()
+```
+
+### Functions as objects
+
+In Python, functions are actually objects with a data type of "function". If you don't put brackets on the end to call the function, you can instead pass it around like any other variable. Try running the following code:
+
+```python
+def my_function():
+    print('My function has run')
+
+def call_it_twice(function):
+    function()
+    function()
+
+call_it_twice(my_function)
+```
+
+### Decorators
+
+You will eventually come across code that looks like the following:
+
+```python
+@example_decorator
+def do_something():
+    pass
+```
+
+The first line is applying a **decorator** to the function below. The decorator transforms or uses the function in some way. The above code won't actually work unless you define "example_decorator" - it's just illustrating how it looks to use a decorator.

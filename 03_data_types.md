@@ -57,7 +57,7 @@ Now let's look at some data types in more detail. For a more thorough list of Py
 
 We have so far only used numeric values. It is worth being aware that there are actually different types of numbers - whole numbers (aka integers) or non-integers (aka floating point numbers). The abbreviations for these are "int" and "float".
 
-This is not a big deal as Python will happily run expressions combining ints and floats, as you may have done already, but they are technically different beasts. 
+This is often not a big deal as Python will happily run expressions combining integers and floats, as you may have done already, but they are in fact different types. 
 
 ```
 >>> 1 + 2
@@ -74,11 +74,15 @@ True
 
 ## True / False (bool)
 
-There are two boolean values, `True` and `False`, which are fairly self-descriptive. You might have an expression that produces a boolean:
-- `1 < 2` means "1 is less than two", so this returns True
-- `1 == 2` means "1 is equal to two", so this returns False. Notice there must be two equals signs, as a single equals sign is used for assigning values, e.g. when creating a variable.
+There are two boolean values, `True` and `False`, which are fairly self-descriptive. There are various operators that can produce booleans by comparing values. For example:
+- `1 < 2` means "1 is less than 2", so this returns True. Similarly, `>` means "greater than".
+- `1 <= 2` means "1 is less than or equal to 2". Similarly, `>=` does what you expect.
+- `1 == 2` means "1 is equal to 2", so this returns False. Notice there must be two equals signs, as a single equals sign is used for assigning values, e.g. when creating a variable.
+- `1 != 2` means "1 is not equal to 2", so this returns True. 
 
-There are Boolean operators for combining them:
+Try writing some comparisons in the REPL and check that they return what you expect.
+
+There are also Boolean operators for combining them:
 - `a and b` is True if both `a` and `b` are True
 - `a or b` is True if either of `a` or `b` (or both) are True
 - `not a` is True if `a` is False
@@ -94,7 +98,7 @@ True
 True
 ```
 
-> In Python, you can actually use other data types in Boolean expressions. Most values will be considered True but some special values are False, such as `0`. For example `1 and 2` returns True
+> In Python, you can actually use other data types in Boolean expressions. Most values will be considered True but some special values are False, such as `0`. 
 
 ### Exercise 3.1
 
@@ -161,17 +165,68 @@ To build a string using some other values, you have three options:
 'I have 0.46kg of apples'
 ```
 
-3. For completeness, there is an older way of performing interpolation - the `format` method of strings. There can be situations where it looks neater, but this is generally just the older and slightly messier way of doing the same thing.
+3. There is another way of performing interpolation - the `format` method of strings. There can be situations where it looks neater, but this is often just the older and slightly messier way of doing the same thing. One useful application of `format` is storing a template as a variable to fill in later.
 
 ```python
 >>> number_of_apples = 2
 >>> 'I have {} apples'.format(number_of_apples)
 'I have 2 apples'
+>>> template = 'I have {} apples'
+>>> template.format(number_of_apples)
+'I have 2 apples'
 ```
+
+### Exercise 3.2
+
+If you've heard of Mad Libs, this exercise should be familiar. We'll pick some words and then insert them into a template sentence.
+
+Set these four variables with whatever values you like:
+
+```python
+plural_noun = 'dogs'
+verb_one = 'jump'
+adjective_one = 'quick'
+adjective_two = 'lazy'
+```
+
+a) Now write an expression that produces text like the following, where the four emphasised words are inserted using the correct variables.
+
+> Computers are making us _quick_, more than even the invention of _dogs_. That's because any _lazy_ computer can _jump_ far better than a person.
+
+b) Maybe you to generate text that puts the input word at the start of a sentence? You can use the `capitalize` method of a string to capitalise the first letter. E.g. `'foobar'.capitalise()` returns `'Foobar'`.
+
+Use that to build this sentence:
+
+> _Quick_ _dogs_ _jump_ every day. _Lazy_ ones never do. 
+
+<details><summary>Answer</summary>
+
+a) Note there is a `'` in the text, so let's use double quotes to wrap our string. The easiest form to read is an f-string:
+
+```python
+f"Computers are making us {adjective_one}, more than even the invention of {plural_noun}. That's because any {adjective_two} computer can {verb} far better than a person."
+
+```
+
+Or store the template in a variable to easily recreate it multiple times, with different values. 
+
+```
+>>> template = "Computers are making us {}, more than even the invention of {}. That's because any {} computer can {} far better than a person."
+>>> template.format(adjective_one, plural_noun, adjective_two, verb)
+```
+
+b) You can call the `capitalize` method inside the f-string:
+
+```
+>>> f'{adjective_one.capitalize()} {plural_noun} {verb} every day. {adjective_two.capitalize()} ones never do.'
+```
+
+</details>
+
 
 ### Character access
 
-You can access a specific character in a string with square brackets and the "index", which means the position but counting from 0. Or you can consider it the offset. So a 0 means the first character and 1 means the second. E.g. 
+You can access a specific character in a string with square brackets and the "index", which means the position of the character but counting from 0. Or you can consider it an offset. Either way, 0 means the first character, 1 means the second, and so on. It looks like this: 
 
 ```
 >>> 'abc'[0]
@@ -180,7 +235,7 @@ You can access a specific character in a string with square brackets and the "in
 'b'
 ```
 
-### Exercise 3.2
+### Exercise 3.3
 
 Can you get the REPL to print out the fourth digit of this number? You will need to convert it to a string first, and then access a character by index.
 
@@ -217,7 +272,7 @@ You create a list by opening a square bracket, writing values with commas betwee
 >>> some_prime_numbers = [2, 3, 5, 7, 11]
 ```
 
-You can access an individual item in the list by writing the _index_ of the item you want in square brackets. The index is the position of the item, but starting at `0` for the first item.
+You can access an individual item in the list by writing the _index_ of the item you want in square brackets. The index is the position of the item, but starting at `0` for the first item. This is just like accessing a character in a string.
 
 ```
 >>> shopping_list[0]
@@ -226,9 +281,13 @@ You can access an individual item in the list by writing the _index_ of the item
 'bread'
 ```
 
-> Rather than grabbing one by position, you will more often want to go through the list and act on each item in turn. We will cover that in chapter 5.
+> Rather than grabbing one by position, you will often want to go through the list and act on each item in turn. We will cover that in chapter 5.
 
-We will discuss functions next chapter but here are two functions worth trying out: `len` gives you the length of a list, `append` is a function on the list itself that will add an item onto the end of the list. Here is how to use them:
+We will discuss functions next chapter but here are three functions worth trying out: 
+- `len` gives you the length of a list
+- `append` is a function on the list itself that will add an item onto the end of the list
+
+Here is how to use them:
 
 ```
 >>> shopping_list = ['milk', 'bread', 'rice']
@@ -239,7 +298,9 @@ We will discuss functions next chapter but here are two functions worth trying o
 ['milk', 'bread', 'rice', 'eggs']
 ```
 
-### Exercise 3.3
+Try it out in the REPL.
+
+### Exercise 3.4
 
 Given a list of prime numbers, write an expression to get the tenth one.
 
@@ -258,7 +319,7 @@ Given a list of prime numbers, write an expression to get the tenth one.
 
 ## Dictionaries
 
-This is another way of storing a collection of things. But instead of storing them in a list, you associate each thing with a label for ease of access. They are called dictionaries because they can be used similarly to an actual dictionary - looking up the definitions of words. In this usage, the word you are looking up is the **key** and the definition is the **value**. You don't want to look up a definition based on its position in the dictionary, you want to look up a particular word.
+This is another way of storing a collection of things. But instead of storing them in a list, you associate each one with a label for ease of access. They are called dictionaries because they can be used similarly to an actual dictionary - looking up the definitions of words. In this usage, the word you are looking up is the **key** and the definition is the **value**. You don't want to look up a definition based on its position in the dictionary, you want to look up a particular word.
 
 Here is an example dictionary:
 
@@ -287,7 +348,7 @@ This is the syntax to add new key/value pairs, or update an existing one:
 
 Try creating, reading and updating some dictionaries via the Python terminal. The key can be a number, string or boolean, and must be unique - only the latest value you set for that key will be kept. The value can be anything at all.
 
-### Exercise 3.4
+### Exercise 3.5
 
 I've finally gone shopping and have added two cartons of eggs to my shopping basket. Here is a Python dictionary to represent them:
 
@@ -309,7 +370,7 @@ Can you get the REPL to print the price per carton of eggs? Then can you calcula
 
 </details>
 
-### Exercise 3.5
+### Exercise 3.6
 
 I would like an easy way to check who is currently staying in each room of my hotel.
 
@@ -323,7 +384,7 @@ Define a dictionary, which maps room numbers to lists of people (strings) occupy
 
 </details>
 
-### Exercise 3.6
+### Exercise 3.7
 
 Using your dictionary from the previous question, can you write an expression to check if a room is free? i.e. it should evaluate to `True` if no one is in that room.
 
@@ -351,7 +412,7 @@ True
 
 </details>
 
-### Exercise 3.7
+### Exercise 3.8
 
 Dictionaries can contain anything as the value, including other dictionaries. This is very common, e.g. when parsing JSON data received from a web API.
 
@@ -378,11 +439,11 @@ Can you write an expression to get the user's address? Can you write an expressi
 
 There is a special value in Python, `None`, which has its own type, `NoneType`. It can be used to represent the absence of a value, such as when optional fields are missed out. It is also the result of a function that doesn't return anything else. The REPL won't print anything when an expression evaluates to None, but it's still there.
 
-You may also end up encountering it because of a mistake. For example, do you remember the .sort() method of lists that modifies an existing list? It doesn't return anything so look at the behaviour of the following code:
+You may also end up encountering it because of a mistake. For example, do you remember the .append() method of lists that modifies an existing list? It doesn't return anything, so look at the behaviour of the following code:
 
 ```
 >>> x = [1, 3, 2]
->>> y = x.sort()
+>>> y = x.append(4)
 >>> y == None
 True
 >>> y
@@ -421,7 +482,7 @@ We've listed some common ones here.
 
 For each troubleshooting exercise, try and figure out what went wrong and how it can be fixed.
 
-### Exercise 3.8
+### Exercise 3.9
 
 The final command here is throwing an error:
 
@@ -433,7 +494,7 @@ The final command here is throwing an error:
 
 Can you fix this? It should return `True`.
 
-### Exercise 3.9
+### Exercise 3.10
 
 What is wrong with the following block of code? Can you fix the mistake?
 
@@ -457,7 +518,7 @@ What does `my_dictionary['greeting']` return?
 
 </details>
 
-### Exercise 3.10
+### Exercise 3.111
 
 Why does this produce an error instead of the string 'Alice'? Can you fix the mistake?
 

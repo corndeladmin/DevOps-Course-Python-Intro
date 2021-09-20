@@ -36,13 +36,13 @@ Let's start out by installing Python.
 ### Windows
 
 - Download the latest Windows installer for Python from https://www.python.org/downloads/windows/.
-  - You'll need to pick either the 32-bit or 64-bit installer, depending on your operating system.
+  - You'll need to pick either the 32-bit or 64-bit installer, depending on your operating system. Use 64-bit if you can.
   - You can check this in `Control Panel -> System -> System type`.
 - Once the installer's finished downloading, run it to install Python.
   - Make sure to select the "Add Python to PATH" option when installing (see screenshot below).
   - This will make it easier to use Python from the command line.
 
-![Python Install Options](Images/python-windows-installer.png)
+![Python Install Options](./Images/python-windows-installer.png)
 
 - Once the installer has completed, you should be able to open a terminal and run `python --version` to check that Python has been installed properly.
 
@@ -244,6 +244,8 @@ One reason for this could be that you installed Python on Windows but `python` h
 
 On Windows, click Start and search for ‘edit environment variables’, or open System properties, Advanced system settings and click the Environment Variables button. In this dialog, you can add or modify User and System variables.
 Select "Path", click "Edit" and then click "New" in the second dialog that appears. You want to enter the **folder** containing the `python.exe` file. It will likely be roughly `C:\Users\YOUR-USERNAME\AppData\Local\Programs\Python\Python39` but try to locate the correct folder on your system.
+
+On a Mac, either
 
 ### Exercise 1.4
 
