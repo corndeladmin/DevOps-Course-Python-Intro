@@ -245,8 +245,6 @@ One reason for this could be that you installed Python on Windows but `python` h
 On Windows, click Start and search for ‘edit environment variables’, or open System properties, Advanced system settings and click the Environment Variables button. In this dialog, you can add or modify User and System variables.
 Select "Path", click "Edit" and then click "New" in the second dialog that appears. You want to enter the **folder** containing the `python.exe` file. It will likely be roughly `C:\Users\YOUR-USERNAME\AppData\Local\Programs\Python\Python39` but try to locate the correct folder on your system.
 
-On a Mac, either
-
 ### Exercise 1.4
 
 The REPL isn't running, and isn't receiving the expressions.
