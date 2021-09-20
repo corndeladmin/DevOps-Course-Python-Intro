@@ -1,3 +1,7 @@
+---
+description: Conditionals and loops
+---
+
 # Chapter 5: Control Flow
 
 ## Chapter objectives
