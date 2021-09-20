@@ -89,7 +89,7 @@ It's okay if your code only works for this specific shopping cart. We will revis
 
 Click to reveal each block
 
-<details><summary>Expected output</summary>
+<details markdown="1"><summary>Expected output</summary>
 
 ```
 Cost of basket before sales and tax: £1.44
@@ -99,7 +99,7 @@ Cost of basket after sales and tax: £1.17
 
 </details>
 
-<details><summary>Getting the data out of the shopping_cart</summary>
+<details markdown="1"><summary>Getting the data out of the shopping_cart</summary>
 
 ```
 >>> shopping_cart = [{'name': 'apple', 'price_per_item': 0.21, 'number': 4}, {'name': 'banana', 'price_per_item': 0.12, 'number': 5}]
@@ -110,7 +110,7 @@ Cost of basket after sales and tax: £1.17
 ```
 </details>
 
-<details><summary>Before discounts/tax</summary>
+<details markdown="1"><summary>Before discounts/tax</summary>
 
 ```
 >>> first_total = price_of_apples + price_of_bananas
@@ -119,7 +119,7 @@ Cost of basket after sales and tax: £1.17
 
 </details>
 
-<details><summary>After sales before tax</summary>
+<details markdown="1"><summary>After sales before tax</summary>
 
 ```
 >>> discounted_price_of_apples = price_of_apples * 0.5
@@ -129,7 +129,7 @@ Cost of basket after sales and tax: £1.17
 
 </details>
 
-<details><summary>After sales and tax</summary>
+<details markdown="1"><summary>After sales and tax</summary>
 
 ```
 >>> after_sales_and_tax = after_sales_before_tax * 1.15

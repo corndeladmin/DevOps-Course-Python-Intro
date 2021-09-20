@@ -121,9 +121,7 @@ Can you do the same thing using these variables?
 >>> you_have_your_umbrella = False
 ```
 
-<details>
-
-<summary>Click here for the answer</summary>
+<details markdown="1"><summary>Click here for the answer</summary>
 
 ```python
 >>> it_is_raining and you_forgot_your_umbrella
@@ -196,17 +194,17 @@ adjective_one = 'quick'
 adjective_two = 'lazy'
 ```
 
-a) Now write an expression that produces text like the following, where the four emphasised words are inserted using the correct variables.
+**a)** Below that, write an expression that produces text like the following, where the four emphasised words are inserted using the correct variables.
 
 > Computers are making us _quick_, more than even the invention of _dogs_. That's because any _lazy_ computer can _jump_ far better than a person.
 
-b) Maybe you to generate text that puts the input word at the start of a sentence? You can use the `capitalize` method of a string to capitalise the first letter. E.g. `'foobar'.capitalise()` returns `'Foobar'`.
+**b)** Now let's generate text that puts the input word at the start of a sentence. You can use the `capitalize` method of a string to capitalise the first letter. E.g. `'foobar'.capitalize()` returns `'Foobar'`.
 
 Use that to build this sentence:
 
 > _Quick_ _dogs_ _jump_ every day. _Lazy_ ones never do. 
 
-<details><summary>Click here for the answer</summary>
+<details markdown="1"><summary>Click here for the answer</summary>
 
 a) Note there is a `'` in the text, so let's use double quotes to wrap our string. The easiest form to read is an f-string:
 
@@ -250,7 +248,7 @@ Can you get the REPL to print out the fourth digit of this number? You will need
 >>> my_number = 123456
 ```
 
-<details><summary>Click here for the answer</summary>
+<details markdown="1"><summary>Click here for the answer</summary>
 
 ```
 >>> my_number = 123456
@@ -315,7 +313,7 @@ Given a list of prime numbers, write an expression to get the tenth one.
 >>> some_prime_numbers = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]
 ```
 
-<details><summary>Click here for the answer</summary>
+<details markdown="1"><summary>Click here for the answer</summary>
 
 ```python
 >>> some_prime_numbers[9]
@@ -365,7 +363,7 @@ eggs = { 'name': 'Free Range Large Eggs', 'individual_price': 1.89, 'number': 2 
 
 Can you get the REPL to print the price per carton of eggs? Then can you calculate the total price?
 
-<details><summary>Click here for the answer</summary>
+<details markdown="1"><summary>Click here for the answer</summary>
 
 ```python
 >>> eggs = { 'name': 'Free Range Large Eggs', 'individual_price': 1.89, 'number': 2 }
@@ -383,7 +381,7 @@ I would like an easy way to check who is currently staying in each room of my ho
 
 Define a dictionary, which maps room numbers to lists of people (strings) occupying each room.
 
-<details><summary>Click here for the answer</summary>
+<details markdown="1"><summary>Click here for the answer</summary>
 
 ```python
 >>> rooms = { 101: ['Joe Bloggs', 'Jane Bloggs'], 102: [], 201: ['Smith'] }
@@ -395,7 +393,7 @@ Define a dictionary, which maps room numbers to lists of people (strings) occupy
 
 Using your dictionary from the previous question, can you write an expression to check if a room is free? i.e. it should evaluate to `True` if no one is in that room.
 
-<details><summary>Click here for the answer</summary>
+<details markdown="1"><summary>Click here for the answer</summary>
 
 The more natural answer might be to check the list is empty, i.e. the name list for that room has a length of 0:
 
@@ -431,7 +429,7 @@ Here is a dictionary with information about a user. The user has a name, age and
 
 Can you write an expression to get the user's address? Can you write an expression to get the user's postcode?
 
-<details><summary>Click here for the answer</summary>
+<details markdown="1"><summary>Click here for the answer</summary>
 
 ```python
 >>> user['address']
@@ -510,13 +508,13 @@ What is wrong with the following block of code? Can you fix the mistake?
 >>> my_dictionary = { 'greeting': 'my_string', 'farewell': 'Goodbye, world' }
 ```
 
-<details><summary>Click here for a hint</summary>
+<details markdown="1"><summary>Click here for a hint</summary>
 
 What does `my_dictionary['greeting']` return?
 
 </details>
 
-<details><summary>Click here for the answer</summary>
+<details markdown="1"><summary>Click here for the answer</summary>
 
 ```python
 >>> my_string = 'Hello, world'
@@ -537,7 +535,7 @@ Traceback (most recent call last):
 KeyError: 159
 ```
 
-<details><summary>Click here for the answer</summary>
+<details markdown="1"><summary>Click here for the answer</summary>
 
 The error is saying that there is no key `159` because the key is a string `'159'`, not a number. When you try to fetch a value, you need to provide the correct key and the number `159` is **not** equal to the string `'159'`. 
 
