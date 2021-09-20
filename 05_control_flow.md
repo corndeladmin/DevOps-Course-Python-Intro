@@ -395,6 +395,12 @@ for letter in ['A', 'B', 'X', 'C', 'D', 'E']:
 
 </details>
 
+## Revisiting the Shopping Cart
+
+You can now revisit the [Shopping Cart Exercise](./Exercises/03_shopping_cart.md). This time, write a function that takes `shopping_cart` as a parameter, and prints out the three values as before. But you should now loop over the list of purchases so you can handle _any_ shopping cart.
+
+To make it even better, add a second function parameter, `discounts`. It should be a list of the current discounts, for example: `[{'item': 'apple', 'discount': '0.5'}]`. Instead of your script always discounting apples by 50%, instead check each item in the shopping cart for a matching item in the list of discounts. 
+
 ## Summary
 
 We've now reached the end of chapter 5. At this point you should know how to use:

@@ -268,8 +268,6 @@ print(my_first_word)
 
 For each troubleshooting exercise, try and figure out what went wrong and how it can be fixed.
 
-> You can check your answers for each exercise at the end of this chapter.
-
 ### Exercise 4.5
 
 Can you fix this script so that the final line prints "Success!"?

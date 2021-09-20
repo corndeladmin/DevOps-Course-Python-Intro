@@ -35,8 +35,8 @@ Let's start out by installing Python.
 
 ### Windows
 
-- Download the latest Windows installer for Python from https://www.python.org/downloads/windows/.
-  - You'll need to pick either the 32-bit or 64-bit installer, depending on your operating system. Use 64-bit if you can.
+- Download the latest Windows installer for Python from <https://www.python.org/downloads/windows/>.
+  - You'll need to pick either the 32-bit or 64-bit installer, depending on your operating system.
   - You can check this in `Control Panel -> System -> System type`.
 - Once the installer's finished downloading, run it to install Python.
   - Make sure to select the "Add Python to PATH" option when installing (see screenshot below).

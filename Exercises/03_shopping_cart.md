@@ -1,4 +1,4 @@
-# Exercise 2: Shopping List
+# Exercise 2: Shopping Cart
 
 ## Introduction
 We've learned a bunch of Python now! Concepts like operators, variables, and being able to construct strings and print them to the console allow us to put Python to work in a variety of situations!
@@ -56,6 +56,12 @@ We have a shopping cart with:
 - 4 apples costing £0.21 each
 - 5 bananas costing £0.12 each
 
+This information is provided to your Python code like this:
+
+```
+>>> shopping_cart = [{'name': 'apple', 'price_per_item': 0.21, 'number': 4}, {'name': 'banana', 'price_per_item': 0.12, 'number': 5}]
+```
+
 To make life complicated, the following rules apply:
 - Apples are on sale at 50% off
 - There is an additional sales tax for the entire basket of 15%
@@ -70,6 +76,8 @@ Cost of basket after sales and tax: £0.00
 
 Write the python code required to perform all the calculations - you'll find it helpful to use variables to store your intermediate results.
 Then, use the `print()` function to display the output.
+
+It's okay if your code only works for this specific shopping cart. We will revisit this exercise after chapter 5 to handle a cart of any size and with any items!
 
 ## Hints
 - I'm getting this error: `TypeError: cannot concatenate 'str' and 'int' objects`

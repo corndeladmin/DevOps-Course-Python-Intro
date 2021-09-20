@@ -518,7 +518,7 @@ What does `my_dictionary['greeting']` return?
 
 </details>
 
-### Exercise 3.111
+### Exercise 3.11
 
 Why does this produce an error instead of the string 'Alice'? Can you fix the mistake?
 
@@ -553,5 +553,7 @@ We've reached the end of chapter 3, and at this point you should know:
   - Dictionaries
 
 Other built-in types exist, and there is also a lot of functionality in these types that we haven't covered yet, but you now have the essentials. We will look at defining your own types (aka **classes**) in a later chapter.
+
+Try this [Shopping Cart Exercise](./Exercises/03_shopping_cart.md) to put it all together.
 
 Next up is [Chapter 4: Functions](./04_functions.md) - defining reusable blocks of code.
