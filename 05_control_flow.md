@@ -1,4 +1,5 @@
 ---
+title: "Chapter 5: Control Flow"
 description: Conditionals and loops
 ---
 
@@ -124,7 +125,7 @@ elif number_of_items > 5:
 print(price)
 ```
 
-<details><summary>Answer</summary>
+<details><summary>Click here for the answer</summary>
 
 Change the `elif` to an `if` and both blocks can execute:
 
@@ -146,7 +147,7 @@ Write a function that takes a string as input and returns the middle character o
 
 E.g. `your_function('abcd')` should return `None` and `your_function('abcde')` should return `'c'`
 
-<details><summary>Hints</summary>
+<details><summary>Click here for hints</summary>
 
 - `len(my_string)` will give you the length of a string
 - `my_int % 2` will give 1 or 0 for odd and even numbers respectively
@@ -154,7 +155,7 @@ E.g. `your_function('abcd')` should return `None` and `your_function('abcde')` s
 
 </details>
 
-<details><summary>Answer</summary>
+<details><summary>Click here for the answer</summary>
 
 ```python
 def get_middle_character(input):
@@ -216,13 +217,13 @@ For example, given this line of code, can you write code that will print `100`?
 number_list = [5, 15, 30, 50]
 ```
 
-<details><summary>Hint</summary>
+<details><summary>Click here for a hint</summary>
 
 Before you start the loop, create a variable to hold the running total. Add to the running total inside the loop.
 
 </details>
 
-<details><summary>Answer</summary>
+<details><summary>Click here for the answer</summary>
 
 ```python
 number_list = [5, 15, 30, 50]
@@ -250,7 +251,7 @@ Use the `in` operator to check if one string is contained within another string.
 
 You can use the `append` method of lists to add an item to it.
 
-<details><summary>Answer</summary>
+<details><summary>Click here for the answer</summary>
 
 ```python
 def find_strings_containing_a(strings):
@@ -306,7 +307,7 @@ for i in range(10, -10, -2):
 
 Write a function that prints a piece of text 100 times. But please use a `for` loop and a `range`, rather than copying and pasting the print statement 100 times.
 
-<details><summary>Answer</summary>
+<details><summary>Click here for the answer</summary>
 
 ```python
 def print_a_hundred_times(text):
@@ -322,7 +323,7 @@ Write a function that takes a positive integer `n`, and returns the sum total of
 
 For example, with n = 3 your function should return 14 (equal to `1 + 4 + 9`) 
 
-<details><summary>Answer</summary>
+<details><summary>Click here for the answer</summary>
 
 ```python
 def sum_cubes_to_n(n):
@@ -349,7 +350,7 @@ while x < 100:
 print(x) 
 ```
 
-<details><summary>Answer</summary>It will keep doubling `x` until it is over 100 and then print it out. So in the end it prints 128</details>
+<details><summary>Click here for the answer</summary>It will keep doubling `x` until it is over 100 and then print it out. So in the end it prints 128</details>
 
 For a loop that never ends, you can use `while True:`. If you accidentally end up with your terminal stuck running an infinite loop, then press `Ctrl + C` to interrupt it.
 
@@ -385,7 +386,7 @@ for letter in ['A', 'B', 'X', 'C', 'D', 'E']:
     print(letter)    
 ``` 
 
-<details><summary>Answer</summary>
+<details><summary>Click here for the answer</summary>
 
 ```python
 for letter in ['A', 'B', 'X', 'C', 'D', 'E']:

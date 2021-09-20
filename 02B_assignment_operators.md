@@ -1,3 +1,8 @@
+---
+title: "Chapter 2B: Assignment Operators"
+description: Bonus chapter on augmented assignment operators and unary operators
+---
+
 # Chapter 2B: Assignment Operators
 
 ## Chapter objectives

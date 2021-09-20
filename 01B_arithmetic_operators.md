@@ -1,3 +1,8 @@
+---
+title: "Chapter 1B: Arithmetic operators"
+description: Bonus chapter on more arithmetic operators
+---
+
 # Chapter 1B: Arithmetic Operators
 
 ## Chapter objectives

@@ -1,3 +1,8 @@
+---
+title: "Chapter 4: Functions"
+description: Defining and then running reusable blocks of code
+---
+
 # Chapter 4: Functions
 
 ## Chapter objectives
@@ -143,7 +148,7 @@ Lists have a `sort` method, which reorders the list from lowest value to highest
 
 Now try to sort that list and check it looks how you expect.
 
-<details><summary>Answer</summary>
+<details><summary>Click here for the answer</summary>
 
 ```python
 >>> my_list = [1, 4, 5, 2, 3]
@@ -212,7 +217,7 @@ Write your solution in a Python file and execute it (either from the command lin
 
 Define a function called `greet_user`, that has one argument, `name`. It should print out a greeting such as `Hello, Smith`, but using the name that was given as a parameter. 
 
-<details><summary>Answer</summary>
+<details><summary>Click here for the answer</summary>
 
 ```python
 def greet_user(name):
@@ -230,7 +235,7 @@ name_one = 'Jane'
 name_two = 'Joe'
 ```
 
-<details><summary>Answer</summary>
+<details><summary>Click here for the answer</summary>
 
 ```python
 greet_user(name_one)
@@ -245,13 +250,13 @@ Write a function that has one parameter - a _list_ of words - and _returns_ the 
 
 Call your function on a list of words to show it works.
 
-<details><summary>Hint</summary>
+<details><summary>Click here for a hint</summary>
 
 First, use the `.sort()` method on the list. Next, `return` the word at index 0.
 
 </details>
 
-<details><summary>Answer</summary>
+<details><summary>Click here for the answer</summary>
 
 ```python
 def get_first_word_alphabetically(words):
@@ -281,7 +286,7 @@ result = do_the_thing
 print(result)
 ```
 
-<details><summary>Answer</summary>
+<details><summary>Click here for the answer</summary>
 
 You need to include brackets to call the function:
 
@@ -301,7 +306,7 @@ two = 1 + 1
 print(two)
 ```
 
-<details><summary>Answer</summary>
+<details><summary>Click here for the answer</summary>
 
 - You need parentheses, not square brackets
 - You need a colon
@@ -330,7 +335,7 @@ my_sandwich = make_a_sandwich('cheese')
 
 If you try running this, you will see nothing is getting printed out. Can you fix it?
 
-<details><summary>Answer</summary>
+<details><summary>Click here for the answer</summary>
 
 The `return` statement will exit the function - later lines will not execute. So let's move it after the print statement.
 

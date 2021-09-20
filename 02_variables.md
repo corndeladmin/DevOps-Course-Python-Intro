@@ -1,3 +1,8 @@
+---
+title: "Chapter 2: Variables"
+description: Storing values in nicely labelled boxes
+---
+
 # Chapter 2: Variables
 
 ## Chapter objectives

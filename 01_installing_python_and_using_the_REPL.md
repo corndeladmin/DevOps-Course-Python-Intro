@@ -1,3 +1,8 @@
+---
+title: "Chapter 1: Python and the REPL"
+description: Installing Python and running some simple commands in the REPL
+---
+
 # Chapter 1: Installing Python and using the REPL
 
 ## Chapter objectives

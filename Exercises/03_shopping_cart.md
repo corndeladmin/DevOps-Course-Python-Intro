@@ -56,7 +56,7 @@ We have a shopping cart with:
 - 4 apples costing £0.21 each
 - 5 bananas costing £0.12 each
 
-This information is provided to your Python code like this:
+This information should be provided to your Python code like this:
 
 ```
 >>> shopping_cart = [{'name': 'apple', 'price_per_item': 0.21, 'number': 4}, {'name': 'banana', 'price_per_item': 0.12, 'number': 5}]
@@ -82,3 +82,58 @@ It's okay if your code only works for this specific shopping cart. We will revis
 ## Hints
 - I'm getting this error: `TypeError: cannot concatenate 'str' and 'int' objects`
 	- You may be trying to use the `+` operator on a string and an integer - remember that `+` can only either add two numbers together (`4 + 4`), or join two strings together (`"Hello, " + "Sarah"`). You might need to use the `str()` function to convert your number into a string first.
+  - You may prefer using an f-string instead (`f"Hello, {name}"`).
+- To format a number, e.g. to two decimal places, it's best to use a [format specifier](https://docs.python.org/3/library/string.html#format-specification-mini-language) in the format string. A fixed number of decimal places is a common requirement, so you may find the answer more easily outside of the official Python documentation.
+
+## Solution
+
+Click to reveal each block
+
+<details><summary>Expected output</summary>
+
+```
+Cost of basket before sales and tax: £1.44
+Cost of basket after sales, before tax: £1.02
+Cost of basket after sales and tax: £1.17
+```
+
+</details>
+
+<details><summary>Getting the data out of the shopping_cart</summary>
+
+```
+>>> shopping_cart = [{'name': 'apple', 'price_per_item': 0.21, 'number': 4}, {'name': 'banana', 'price_per_item': 0.12, 'number': 5}]
+>>> apples = shopping_cart[0]
+>>> bananas = shopping_cart[1]
+>>> price_of_apples = apples['price_per_item'] * apples['number']
+>>> price_of_bananas = bananas['price_per_item'] * bananas['number']
+```
+</details>
+
+<details><summary>Before discounts/tax</summary>
+
+```
+>>> first_total = price_of_apples + price_of_bananas
+>>> print(f'Cost of basket before sales and tax: £{first_total}')
+```
+
+</details>
+
+<details><summary>After sales before tax</summary>
+
+```
+>>> discounted_price_of_apples = price_of_apples * 0.5
+>>> after_sales_before_tax = discounted_price_of_apples + price_of_bananas
+>>> print(f'Cost of basket after sales, before tax: £{after_sales_before_tax}')
+```
+
+</details>
+
+<details><summary>After sales and tax</summary>
+
+```
+>>> after_sales_and_tax = after_sales_before_tax * 1.15
+>>> print(f'Cost of basket after sales and tax: £{after_sales_and_tax:.2f}')
+```
+
+</details>
