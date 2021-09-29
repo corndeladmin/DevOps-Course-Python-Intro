@@ -1,3 +1,8 @@
+---
+title: "Chapter 6: Packages, Modules and Imports"
+description: And using Poetry to manage dependencies 
+---
+
 # Chapter 6: Packages, Modules and Imports
 
 ## What are these words?
@@ -9,7 +14,7 @@ The simple picture is:
 
 By importing a module, you ensure the file has run and you get access to anything that it has defined (like variables or functions). 
 
-> This analogy doesn't always hold up - packages and modules don't *need* to derive from the filesystem - but it's correct for most purposes. 
+> This analogy doesn't always hold up - packages and modules don't *need* to derive from the file system - but it's correct for most purposes. 
 
 For example, look at this file structure:
 
@@ -47,16 +52,16 @@ Let's try it out:
   bar = 'World'
   ```
 - Open the REPL in the same folder
-- Notice that `foobar` is not defined:
+- Notice that `foo` and `bar` are not defined:
 ```
->>> foobar
+>>> foo
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-NameError: name 'foobar' is not defined
+NameError: name 'foo' is not defined
 ```
 - Run `import example_module`. Now you can access `example_module.foo` and `example_module.bar`.
 - Now run `from example_module import foo`. This lets you access `foo` directly instead of including its module name each time.
-  > The difference between `from x import y` and `import x.y` is just style. Importing a whole module is often preferable because it's clearer, but it can lead to long-winded code.
+  > The difference between `from x import y` and `import x` is just style. Importing a whole module is often preferable because it's clearer, but it can lead to long-winded code.
 - Import multiple things at once with commas: `from example_module import foo, bar`
 - Notice that even if you import the module multiple times, it only printed its message once. But if you restart the REPL, you can get the message to print again.
 
@@ -100,34 +105,36 @@ Create package containing some modules:
 - Create a subfolder (`package`), with two modules inside (`module1.py` and `module2.py`) and a blank file called `__init__.py`.
 - Declare some variables or functions inside those module files.
 
-In the *parent folder*, create a file `main.py` and we will import those modules into here.
+In the *parent folder*, create a file `main.py` which is going to import those other modules.
 
-When a module is inside a package, prefix it with the package name and a dot (not a slash), e.g. you can do either of the following:
+When a module is inside a package, prefix it with the package name and a dot (not a slash) or import it "from" the package, i.e. do either of the following:
 - `import package.module1`
 - `from package import module1` 
 
 Try it out! Add import statements to `main.py` and demonstrate that it is successfully accessing variables or functions defined by `module1.py`/`module2.py`.
 
 > Note, the syntax continues in this way for folders within folders, e.g. `from folder.subfolder.subsubfolder import module`.
-> You can still import an object directly with `import package.module1.foo` or `from package.module1 import foo`. 
+> You can still import an object directly with `from package.module1 import foo`. 
 
 If you want to import both, you might try to run `import package` and then access `package.module2` but you will see that **doesn't** work. Submodules do not get imported automatically - you must import each one explicitly, e.g. `from package import module1, module2`.
 
-> Automatic import of submodules *can* be done by including them in the `__init__.py` but we're not going to look at that now.
+> Automatic import of submodules *can* be done by including them in the package's `__init__.py` file, but we're not going to look at that now.
 
 What if module1 wants to import module2? The statement you need at the top of `module1.py` is the same as what you would put in `main.py`, e.g. `from package import module2`.
 
 Try it out:
 - In module2, define a variable
-- In your `module1.py` file, import module2 as described above and `print` its variable
+- In module1, import module2 as described above and `print` its variable
 - In your `main.py` file, import module1
 - Run the `main.py` file
 
-Note that you cannot run module1.py directly. It will fail to find module2. This is because the import statement will look modules relative to the starting script (main.py in this example), or the current directory when you open the REPL.
+Note that you cannot run module1.py directly now. It will fail to find module2. This is because the import statement will search relative to the "current working directory", which is the directory of the "top level script" (main.py in this example). If you run the module1 file directly, your import statement would need to be `import module2` but then this would not work with main.py.
 
-> It also searches other locations, which is how it will find things from the Python library or other installed packages. You normally won't need to worry about managing this though.
+Or it's the current directory when you open the REPL.
 
-> Relative imports exist: `from . import my_module` will import a file in the same folder or `from .my_subpackage import my_module` to grab something from a subfolder. You might want relative imports *within* a package of closely related modules so that you can move it around more easily. But in general, it would be safer to stick to absolute imports. The "top level script" (main.py in this example) cannot use relative imports.
+> It also searches other locations, which is how it will find things from the Python library or other installed packages. You normally won't need to worry about managing this.
+
+> Relative imports exist: `from . import my_module` will import a file in the same folder or `from .my_subpackage import my_module` to grab something from a subfolder. You might want relative imports *within* a package of closely related modules so that you can move it around more easily. But in general, stick to absolute imports. The "top level script" (main.py in this example) cannot use relative imports.
 
 ### Aliases
 
@@ -150,6 +157,20 @@ print(my_module1.example_var)
 print(my_module2.example_var)
 ```
 
+<details markdown="1"><summary>Click here for the answer</summary>
+
+```python
+from package1 import my_module as my_module1
+from package2 import my_module as my_module2
+
+print(my_module1.example_var)
+print(my_module2.example_var)
+```
+
+</details> 
+
+<br/>
+
 ## Installing Dependencies
 
 There are many Python packages that are not built into Python but are available on the public [PyPi](https://pypi.org/) server for you to download and use in your script/project. You can also connect to your own private PyPi server - you might privately publish packages to share between projects, or your organisation might curate a smaller set of packages that are vetted as trustworthy and secure enough for use.
@@ -168,7 +189,7 @@ It's worth being aware of how to use pip though we will be using a tool called P
 
 ### Virtual envs
 
-What if you have two projects, A and B, with different dependencies? They could even depend on different versions of the same package. How do you reliably run the two projects without your setup for project A affecting project B?
+What if you have two projects on your computer, A and B, with different dependencies? They could even depend on different versions of the same package. How do you reliably run the two projects without your setup for project A affecting project B?
 
 The solution is to give each project its own copy of the Python interpreter and its own library of installed packages. "Python interpreter" means Python itself - the program that reads your `.py` files and does something with them. This copy of Python is known as a **virtual environment**. The impact of this on running Python is when you are trying to run project A or update its packages, make sure you are using project A's copy of Python (i.e. its virtual environment). When running project B, use project B's virtual environment.
 

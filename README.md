@@ -23,4 +23,5 @@ Follow the link to Chapter 1 to get started.
 - [Chapter 3: Data Types](./03_data_types.md)
 - [Chapter 4: Functions](./04_functions.md)
 - [Chapter 5: Control Flow](./05_control_flow.md)
-- Chapters 6+ coming soon
+- [Chapter 6: Packages, Modules and Imports](./06_packages_and_imports.md)
+- Chapters 7+ coming soon

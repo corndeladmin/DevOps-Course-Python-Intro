@@ -38,7 +38,9 @@ $ python test_script.py
 Hello, world!
 ```
 
-You can also run the file via VSCode if you have installed the Python extension. While viewing the file in VSCode, click the green play button in the top right of the screen. If you don't see the button, make sure you've saved the file first!
+You can also run the file via VS Code if you have installed the Python extension. While viewing the file in VS Code, click the play button in the top right of the screen. If you don't see the button, make sure you've saved the file first!
+
+> If your current terminal has the Python REPL open (the prompt starts with `>>>`), then you will get a "SyntaxError" when trying to run the file this way. VS Code uses the current terminal to run the file - it needs to be an actual command line, not a Python terminal, so exit the REPL first.
 
 You can also run `python -i test_script.py` to open up a REPL once the file finishes executing. For example:
 
@@ -357,7 +359,7 @@ We've reached the end of chapter 4, and at this point you should know:
 - How to define functions, including specifying parameters
 - How to invoke functions, including passing in arguments
 
-Next up is [Chapter 5: Control Flow](./05_control_flow.md) - running code only when a condition is met.
+Next up is [Chapter 5: Control Flow](./05_control_flow.md) - running code in a loop or when a condition is met.
 
 See below for some extra points regarding functions in Python:
 

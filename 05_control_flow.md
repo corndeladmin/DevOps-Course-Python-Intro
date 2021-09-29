@@ -414,4 +414,4 @@ We've now reached the end of chapter 5. At this point you should know how to use
 - The `range` function
 - The keywords `break` and `continue` inside loops
 
-The next chapter (coming soon) will cover using multiple files together in a project and installing/importing other modules.
+Next up is [Chapter 6: Packages & Imports](./06_packages_and_imports.md). It covers using multiple files together in a project and installing/importing other modules.
