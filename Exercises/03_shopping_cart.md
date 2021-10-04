@@ -1,4 +1,9 @@
-# Exercise 2: Shopping Cart
+---
+title: "Exercise: Shopping Cart"
+description: Calculate the cost of a shopping cart
+---
+
+# Exercise: Shopping Cart
 
 ## Introduction
 We've learned a bunch of Python now! Concepts like operators, variables, and being able to construct strings and print them to the console allow us to put Python to work in a variety of situations!

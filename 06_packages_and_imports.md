@@ -65,6 +65,8 @@ NameError: name 'foo' is not defined
 - Import multiple things at once with commas: `from example_module import foo, bar`
 - Notice that even if you import the module multiple times, it only printed its message once. But if you restart the REPL, you can get the message to print again.
 
+> You can import everything from a module by using `from my_module import *` but this is **not** recommended. It introduces unknown names and makes your code less readable.
+
 ### Exercise 6.1
 
 Let's try out some packages from the Python Standard Library. They come installed with Python, but you will need to import each of them whenever you want to use them.
@@ -97,7 +99,8 @@ print(now)
 print(now.strftime('%d/%m/%y %H:%M'))
 ```
 
-</details> 
+</details>
+</br>
 
 ### Navigating folders
 
@@ -168,7 +171,6 @@ print(my_module2.example_var)
 ```
 
 </details> 
-
 <br/>
 
 ## Installing Dependencies
@@ -294,4 +296,6 @@ And that's the end of Chapter 6. You should now be happy with:
 - The importance of proper package management
 - How to use Poetry to manage the virtual environment and required packages
 
-The next chapter will be on **classes**
+Try an exercise to reinforce what you've learnt: [Choose Your Own Adventure](./Exercises/06_adventure_game.md).
+
+The next chapter will be on **classes**.

@@ -25,3 +25,8 @@ Follow the link to Chapter 1 to get started.
 - [Chapter 5: Control Flow](./05_control_flow.md)
 - [Chapter 6: Packages, Modules and Imports](./06_packages_and_imports.md)
 - Chapters 7+ coming soon
+
+## Exercises
+
+- [Shopping Cart](./Exercises/03_shopping_cart.md)
+- [Choose Your Own Adventure](./Exercises/06_adventure_game.md)
