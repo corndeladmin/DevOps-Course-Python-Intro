@@ -100,7 +100,6 @@ print(now.strftime('%d/%m/%y %H:%M'))
 ```
 
 </details>
-</br>
 
 ### Navigating folders
 
@@ -171,7 +170,6 @@ print(my_module2.example_var)
 ```
 
 </details> 
-<br/>
 
 ## Installing Dependencies
 
@@ -257,11 +255,7 @@ for item in shopping_basket:
 shopping_basket = ['cookies', 'ice cream']
 ```
 
-<br/>
-
 2. I can successfully run `poetry run python src/app.py` on command line to run my app in Poetry's virtual environment. But I get errors when launching it through VS Code.
-
-<br/>
 
 3. I have a file (app.py) in the root folder and two files (shopping_basket.py and price_checker.py) in a subfolder called "checkout". 
     - app.py contains `from checkout import shopping_basket`
@@ -275,11 +269,7 @@ shopping_basket = ['cookies', 'ice cream']
     - Or change the for-loop to `for item in shopping_basket.shopping_basket:`
     -  `from shopping_basket import shopping_basket`
 
-<br/>
-
 2. The most likely issue is you need to select the correct Python interpreter in VS Code. Find the one created by Poetry in a virtual environment.
-
-<br/>
 
 3. When you run the file directly, its folder is used as the current working directory. When you run `python app.py`, all imports including inside shopping_basket.py will need to be relative to that top level file, app.py. So its import statement should be `from checkout import price_checker`
 
