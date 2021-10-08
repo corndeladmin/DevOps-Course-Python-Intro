@@ -103,20 +103,20 @@ print(now.strftime('%d/%m/%y %H:%M'))
 
 ### Navigating folders
 
-Create package containing some modules:
+Create a package containing some modules:
 - Create a subfolder (`package`), with two modules inside (`module1.py` and `module2.py`) and a blank file called `__init__.py`.
 - Declare some variables or functions inside those module files.
 
-In the *parent folder*, create a file `main.py` which is going to import those other modules.
+In the *parent folder* above the folder called "package", create a file `main.py`. This "main" file is going to import those other modules.
 
-When a module is inside a package, prefix it with the package name and a dot (not a slash) or import it "from" the package, i.e. do either of the following:
+To import a module that lives in another package, prefix it with the package name and a dot (not a slash) or import it "from" the package, i.e. do either of the following:
 - `import package.module1`
 - `from package import module1` 
 
 Try it out! Add import statements to `main.py` and demonstrate that it is successfully accessing variables or functions defined by `module1.py`/`module2.py`.
 
-> Note, the syntax continues in this way for folders within folders, e.g. `from folder.subfolder.subsubfolder import module`.
-> You can still import an object directly with `from package.module1 import foo`. 
+> Note that the syntax continues in this way for folders within folders, e.g. `from folder.subfolder.subsubfolder import module`.
+> You can still import an object directly with `from package.module1 import foo` (if module1.py defines something called foo)
 
 If you want to import both, you might try to run `import package` and then access `package.module2` but you will see that **doesn't** work. Submodules do not get imported automatically - you must import each one explicitly, e.g. `from package import module1, module2`.
 
@@ -130,13 +130,13 @@ Try it out:
 - In your `main.py` file, import module1
 - Run the `main.py` file
 
-Note that you cannot run module1.py directly now. It will fail to find module2. This is because the import statement will search relative to the "current working directory", which is the directory of the "top level script" (main.py in this example). If you run the module1 file directly, your import statement would need to be `import module2` but then this would not work with main.py.
+Note that you cannot run module1.py directly now. It will fail to find module2. This is because the import statement will search relative to the "current working directory", which is the directory of the "top level script" (main.py in the example). If you run the module1 file directly, then the current working directory is the package folder, and your import statement would need to be `import module2` but then this would not work with main.py.
 
-Or it's the current directory when you open the REPL.
+When you open the REPL, the "current working directory" is just the current directory.
 
 > It also searches other locations, which is how it will find things from the Python library or other installed packages. You normally won't need to worry about managing this.
 
-> Relative imports exist: `from . import my_module` will import a file in the same folder or `from .my_subpackage import my_module` to grab something from a subfolder. You might want relative imports *within* a package of closely related modules so that you can move it around more easily. But in general, stick to absolute imports. The "top level script" (main.py in this example) cannot use relative imports.
+> Relative imports exist: `from . import my_adjacent_module` will import a file in the same folder or `from .my_subpackage import my_module` will find something in a subfolder. You might want relative imports *within* a package of closely related modules so that you can move it around more easily. But in general, stick to absolute imports. The "top level script" (main.py in this example) cannot use relative imports.
 
 ### Aliases
 
@@ -152,7 +152,7 @@ There are some fairly common aliases for some of Python's built-in modules, like
 
 ### Exercise 6.2
 
-Create two packages, `package1` and `package2`. Within each package, create a module called `my_module`. In each of the files called `my_module.py`, declare some variables. From your `main.py` file in the root folder, import both modules so that they can be accessed directly. For example, you should be able to execute this code after the imports, if each module defined their own `example_var` variable:
+Create two packages, `package1` and `package2`. Within each package, create a module called `my_module`. In each of the files called `my_module.py`, declare some variables. From your `main.py` file in the root folder, import both modules so that the modules can be accessed directly. For example, what import statements would let you run the following code, assuming each module defined their own `example_var` variable?
 
 ```python
 print(my_module1.example_var)
@@ -212,7 +212,7 @@ Updating or adding new dependencies should still be effortless.
 There will be up to three Poetry files in the top folder of the project.
 - `pyproject.toml` contains some information about your project in case you want to publish it, as well as a list of your project's direct depenencies. 
 - `poetry.lock` contains a list of all the packages that were installed last time and exact versions for all of them. This is generate when you use Poetry to install required packages.
-- `poetry.toml` is an optional file for configuration options for the current project, e.g. creating a virtual environment
+- `poetry.toml` is an optional file for configuration options for the current project, e.g. whether to create a virtual environment.
 
 Some other tools exist with similar goals - Pipenv, pip-tools, Conda - but Poetry is coming out on top as a tool that achieves everything we need.
 
@@ -255,7 +255,7 @@ for item in shopping_basket:
 shopping_basket = ['cookies', 'ice cream']
 ```
 
-2. I can successfully run `poetry run python src/app.py` on command line to run my app in Poetry's virtual environment. But I get errors when launching it through VS Code.
+2. I can successfully run `poetry run python src/app.py` on command line to run my app in Poetry's virtual environment. But I get errors when launching the file through VS Code.
 
 3. I have a file (app.py) in the root folder and two files (shopping_basket.py and price_checker.py) in a subfolder called "checkout". 
     - app.py contains `from checkout import shopping_basket`
@@ -286,6 +286,6 @@ And that's the end of Chapter 6. You should now be happy with:
 - The importance of proper package management
 - How to use Poetry to manage the virtual environment and required packages
 
-Try an exercise to reinforce what you've learnt: [Choose Your Own Adventure](./Exercises/06_adventure_game.md).
+Try an exercise to reinforce what you've learnt on the course so far: [Choose Your Own Adventure](./Exercises/06_adventure_game.md).
 
 The next chapter will be on **classes**.
