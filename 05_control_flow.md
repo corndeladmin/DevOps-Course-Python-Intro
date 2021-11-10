@@ -350,7 +350,11 @@ while x < 100:
 print(x) 
 ```
 
-<details markdown="1"><summary>Click here for the answer</summary>It will keep doubling `x` until it is over 100 and then print it out. So in the end it prints 128</details>
+<details markdown="1"><summary>Click here for the answer</summary>
+
+It will keep doubling `x` until it is over 100 and then print it out. So in the end it prints 128
+
+</details>
 
 For a loop that never ends, you can use `while True:`. If you accidentally end up with your terminal stuck running an infinite loop, then press `Ctrl + C` to interrupt it.
 
