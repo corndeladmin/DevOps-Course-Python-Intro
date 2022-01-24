@@ -5,11 +5,23 @@ description: And using Poetry to manage dependencies
 
 # Chapter 6: Packages, Modules and Imports
 
+## Chapter objectives
+
+You will at some point need to use Python code that is not all contained in one file. You will either use code other people wrote, or you will be splitting your codebase into multiple files to make it easier to navigate. Probably both.
+
+Additionally, when using code from other projects, you should make a note of this dependency on the other project, what version you are using and have an easy way of downloading it. We will use Poetry for this.
+
+In this chapter you will learn:
+
+- What Python modules are
+- The various ways you can **import**.
+- How to get started with Poetry to manage your dependencies.
+
 ## What are these words?
 
 The simple picture is:
 - Each Python file is a **module**
-- A folder is a **package**. Just like folders containing files/subfolders, a package contains modules/subpackages.
+- A folder is a **package**. If the folder contains files/subfolders, the package contains modules/subpackages.
 - For your module (file) to access code from another, you must first **import** it
 
 By importing a module, you ensure the file has run and you get access to anything that it has defined (like variables or functions). 

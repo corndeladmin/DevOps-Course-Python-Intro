@@ -377,9 +377,9 @@ Can you get the REPL to print the price per carton of eggs? Then can you calcula
 
 ### Exercise 3.6
 
-I would like an easy way to check who is currently staying in each room of my hotel.
+I would like an easy way to check who is currently staying in each room of my hotel. Define a dictionary, which maps room numbers to lists of people (strings) occupying each room.
 
-Define a dictionary, which maps room numbers to lists of people (strings) occupying each room.
+Put two guests in room 101, no guests in room 102, and one guest in room 201.
 
 <details markdown="1"><summary>Click here for the answer</summary>
 
@@ -389,37 +389,34 @@ Define a dictionary, which maps room numbers to lists of people (strings) occupy
 
 </details>
 
+
 ### Exercise 3.7
 
-Using your dictionary from the previous question, can you write an expression to check if a room is free? i.e. it should evaluate to `True` if no one is in that room.
+Using your dictionary from the previous question, can you write expressions to find the answers to the following questions?
+
+- Who is staying in room 101?
+- How many guests are staying in room 201?
+- Is room 102 vacant?
 
 <details markdown="1"><summary>Click here for the answer</summary>
 
-The more natural answer might be to check the list is empty, i.e. the name list for that room has a length of 0:
+- Get the value for the desired key: `rooms[101]`. This returns a list of strings.
+- Get the length of a list with the `len` function: `len(rooms[201])`. This returns an integer
+- Check if the length of the list is zero. This returns a boolean:
+  - `len(rooms[101]) == 0` returns `False`
+  - `len(rooms[102]) == 0` returns `True`
 
-```python
->>> rooms = { 101: ['Joe Bloggs', 'Jane Bloggs'], 102: [], 201: ['Smith'] }
->>> len(rooms[101]) == 0
-False
->>> len(rooms[102]) == 0
-True
-```
-
-But you can also take advantage of the fact that an empty list is "falsy". It is treated like False when converted to a boolean. `bool([]) == False`
-
-```python
->>> rooms = { 101: ['Joe Bloggs', 'Jane Bloggs'], 102: [], 201: ['Smith'] }
->>> not rooms[101]
-False
->>> not rooms[102]
-True
-```
+There's an alternative answer for the last part. You could take advantage of the fact that an empty list is "falsy", meaning it is treated like False when used as a boolean. A list of any other size is "truthy". To answer the question "is room X vacant", reverse that boolean with `not`.
+- `not []` will return True (i.e. the room is empty)
+- So you can write `not rooms[102]`
 
 </details>
 
 ### Exercise 3.8
 
-Dictionaries can contain anything as the value, including other dictionaries. This is very common, e.g. when parsing JSON data received from a web API.
+It's very common for dictionaries to contain smaller dictionaries.
+
+> It is the same structure as JSON, a popular data format for web APIs. This is mentioned in module 2.
 
 Here is a dictionary with information about a user. The user has a name, age and address. The address is itself a dictionary.
 
@@ -427,7 +424,8 @@ Here is a dictionary with information about a user. The user has a name, age and
 >>> user = { 'name': 'Jamie', 'age': 41, 'address': { 'postcode': 'W2 3AN', 'first_line': '23 Leinster Gardens' } }
 ```
 
-Can you write an expression to get the user's address? Can you write an expression to get the user's postcode?
+- Write an expression to get the user's address (the nested dictionary).
+- Write an expression to get just the user's postcode (just a single string).
 
 <details markdown="1"><summary>Click here for the answer</summary>
 

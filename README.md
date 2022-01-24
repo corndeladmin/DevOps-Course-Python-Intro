@@ -2,7 +2,7 @@
 
 Welcome to Python!
 
-Python is designed to be comparatively easy to pick up but even so, learning a programming language can be difficult. Compared to the course material in Aptem, this mini course is focused on:
+Python is designed to be comparatively easy to pick up but even so, learning a programming language can be difficult. Compared to the main DevOps course material in Aptem, this mini course is focused on:
 
 - Explaining new topics in greater detail and compared to familiar concepts.
 - More examples for each topic.
@@ -10,7 +10,7 @@ Python is designed to be comparatively easy to pick up but even so, learning a p
 
 The aim is to make Python more approachable for everyone, even those without any programming experience.
 
-After this course you should feel confident using Python and have a solid understanding of its core concepts. The material available in Aptem will provide different levels of detail, and some longer exercises. Here we will master the basics.
+After this course you should feel confident using Python and have a solid understanding of its core concepts. The material available in Aptem will provide different levels of detail, and some longer exercises. Here we will master the basics of Python.
 
 Follow the link to Chapter 1 to get started.
 
@@ -24,7 +24,7 @@ Follow the link to Chapter 1 to get started.
 - [Chapter 4: Functions](./04_functions.md)
 - [Chapter 5: Control Flow](./05_control_flow.md)
 - [Chapter 6: Packages, Modules and Imports](./06_packages_and_imports.md)
-- Chapters 7+ coming soon
+- [Chapter 7: Classes](./07_classes.md)
 
 ## Exercises
 
