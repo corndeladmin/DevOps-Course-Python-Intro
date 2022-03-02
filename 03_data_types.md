@@ -189,7 +189,7 @@ Set these four variables with whatever values you like:
 
 ```python
 plural_noun = 'dogs'
-verb_one = 'jump'
+verb = 'jump'
 adjective_one = 'quick'
 adjective_two = 'lazy'
 ```

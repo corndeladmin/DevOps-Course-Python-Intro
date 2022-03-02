@@ -399,7 +399,7 @@ for letter in ['A', 'B', 'X', 'C', 'D', 'E']:
     if letter == 'X':
         continue
     
-    print(i)
+    print(letter)
 ```
 
 </details>
