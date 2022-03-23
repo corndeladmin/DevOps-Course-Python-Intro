@@ -204,8 +204,8 @@ Here is a definition of a class that stores the position and velocity of an obje
 ```python
 class MovingThing:
     def __init__(self, x_position, y_position, x_velocity, y_velocity):
-        self.x_position = x
-        self.y_position = y
+        self.x_position = x_position
+        self.y_position = y_position
         self.x_velocity = x_velocity
         self.y_velocity = y_velocity
 ```
@@ -221,8 +221,8 @@ Can you make your `update_position` method take a `time` parameter instead of al
 ```python
 class MovingThing:
     def __init__(self, x_position, y_position, x_velocity, y_velocity):
-        self.x_position = x
-        self.y_position = y
+        self.x_position = x_position
+        self.y_position = y_position
         self.x_velocity = x_velocity
         self.y_velocity = y_velocity
 
