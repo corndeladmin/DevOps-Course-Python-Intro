@@ -166,7 +166,7 @@ To build a string using some other values, you have three options:
 >>> f'I have {number_of_apples} apples'
 'I have 2 apples'
 >>> kilos_of_apples = 0.4567
->>> f'I have {number_of_apples:.3f}kg of apples'
+>>> f'I have {kilos_of_apples:.3f}kg of apples'
 'I have 0.457kg of apples'
 ```
 
