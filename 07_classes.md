@@ -199,6 +199,118 @@ my_dog_is_healthy = my_dog.is_healthy_weight()
 
 ### Exercise 7.2
 
+Here is a class that stores the contents of your pantry. It holds a **dictionary** of all the food stored inside.
+
+```python
+class Pantry:
+    def __init__(self, food_dictionary):
+        self.food_dictionary = food_dictionary
+```
+
+The **key** for each item in the dictionary is the name of the food item, and the **value** is the amount stored in the pantry. Here is some example usage:
+
+```python
+initial_food_collection = {
+    'grams of pasta': 500,
+    'jars of jam': 2
+}
+my_pantry = Pantry(initial_food_collection)
+```
+
+1) Add a method to the `Pantry` class, called `print_contents`. It should take no parameters (apart from `self`). For now, just `print` the dictionary directly.
+
+You should be able to run `my_pantry.print_contents()` and see the whole dictionary displayed in your terminal.
+
+<details markdown="1"><summary>Click here for the answer</summary>
+
+```python
+class Pantry:
+    def __init__(self, food_dictionary):
+        self.food_dictionary = food_dictionary
+
+    def print_contents(self):
+        print(self.food_dictionary)
+```
+
+To use it:
+```python
+initial_food_collection = {
+    'grams of pasta': 500,
+    'jars of jam': 2
+}
+my_pantry = Pantry(initial_food_collection)
+my_pantry.print_contents()
+```
+
+</details>
+
+2) Now improve the print message so it's more human-readable. Print the message "I contain:" and then loop through the `food_amount_by_name` dictionary, printing the amount followed by the name for each one. For the above example of a pantry, you should get the following result:
+
+```
+I contain:
+500 grams of pasta
+2 jars of jam
+``` 
+
+**Hint:** It will be convenient to loop through the dictionary in this way: `for key, value in my_dictionary.items():`
+
+<details markdown="1"><summary>Click here for the answer</summary>
+
+```python
+class Pantry:
+    def __init__(self, food_dictionary):
+        self.food_dictionary = food_dictionary
+
+    def print_contents(self):
+        print('I contain:')
+        for name,amount in self.food_dictionary:
+            print(f'{amount} {name}')
+```
+
+Use it in the same way as before.
+</details>
+
+
+3) Finally, add another method to the class, called `add_food`, which takes two parameters (in addition to `self`), called `name` and `amount`. If the pantry doesn't contain that food item yet, add it to the dictionary. If that food item is already in the dictionary, e.g. you are trying to add some more "grams of pasta", then add on its amount to the existing record.
+
+E.g. `my_pantry.add_food('grams of pasta', 200) should result in 700 grams of pasta stored in the pantry. You can call the `print_contents` method to check that it works.
+
+**Hint:** One way you could do this is using the `in` keyword to check if a key is already present in a dictionary. For example, `'foobar' in my_dict` will return `True` if that dictionary already contains a key, 'foobar'. 
+
+<details markdown="1"><summary>Click here for the answer</summary>
+
+```python   
+    def add_food(self, name, amount):
+        if name in self.food_dictionary:
+            self.food_dictionary[name] += amount
+        else:
+            self.food_dictionary[name] = amount
+```
+
+Alternatively, you can use `get` to access a dictionary with a fallback value when the key is not present:
+```python   
+    def add_food(self, name, amount):
+        self.food_dictionary[name] = self.food_dictionary.get(name, 0) + amount
+```
+
+To use it:
+```python
+initial_food_collection = {
+    'grams of pasta': 500,
+    'jars of jam': 2
+}
+my_pantry = Pantry(initial_food_collection)
+my_pantry.print_contents()
+
+my_pantry.add_food('potatoes', 3)
+my_pantry.add_food('grams of pasta', 200)
+my_pantry.print_contents()
+```
+
+</details>
+
+### Exercise 7.3
+
 Here is a definition of a class that stores the position and velocity of an object in terms of x,y coordinates.
 
 ```python
@@ -249,9 +361,9 @@ To take a time parameter:
 ```
 </details>
 
-### Exercise 7.3
+### Exercise 7.4
 
-Here is a class definition and some data in the form of a list of dictionaries. 
+Here is a class definition and some data in the form of a dictionary. 
 
 ```python
 class Publication:
@@ -354,7 +466,7 @@ for publication in list_of_publications:
 ```
 </details> 
 
-### Exercise 7.4
+### Exercise 7.5
 
 Define a class to represent users.
 - Users should have `name` and `email_address` attributes, both set in the constructor via parameters.
@@ -378,7 +490,7 @@ class User:
 
 ## Troubleshooting exercises
 
-### Exercise 7.5
+### Exercise 7.6
 
 Fix this class definition. There are three issues.
 
@@ -437,7 +549,7 @@ This could be useful for a variety of reasons:
 - Tracking data across all instances. For example, keep a count of how many dogs there are in total.
 - Defining default values. For example, when you construct a new dog, maybe you want to set a `plays_well_with_cats` variable to false by default, but individual dogs could choose to override this.
 
-### Exercise 7.6
+### Exercise 7.7
 
 Create a `Dog` class with a `count` class attribute. Every time you construct a new dog, increment this value
 
@@ -454,7 +566,7 @@ class Dog:
 
 </details> 
 
-### Exercise 7.7
+### Exercise 7.8
 
 ```python
 class Cat:
