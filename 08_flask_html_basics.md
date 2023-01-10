@@ -44,15 +44,20 @@ Since HTML is a markup language, it is possible to alter the way the text is str
 
 You can think of an HTML page as a document, which is composed of several elements. Tags are used to mark the beginning and end of an element, and are usually pre-defined keywords enclosed in angle brackets. To denote the start of an element, you would see a tag such as `<tag>`, and to mark where the element ends, the tag is accompanied by a forward slash before the keyword, such as `</tag>`.
 
-As an example:
-- `<html>` and `</html>` are tags
-- `<html> Hello World! </html>` is an element
+> Many elements allow other elements nested inside them, called _child nodes_. Child nodes refer to those above them as _parent nodes_.
 
 > Tags are not displayed by the browser. Instead, they instruct the browser on _how_ to display the HTML element.
 
+There are also elements that do not have an end tag and cannot contain child (nested) nodes. These are called [void elements](https://developer.mozilla.org/en-US/docs/Glossary/Void_element), and among those we will use `<input>` and `<img>`.
+
+As an example:
+- `<html>` and `</html>` are tags
+- `<html> Hello World! </html>` is an element
+- `<input>` is also an element
+
 ### Exercise 8.2
 
-Let's inspect how the browser views our document. Right click anywhere on the page and then pick "Inspect" (this can have a different but similar name depending on your browser, such as "Inspect Element"). This should open up a panel on the right side. Navigate to the `Elements` tab, where you will see the `Hello World!` text surrounded by some tags.
+Let's inspect how the browser views our document. Right click anywhere on the page and then pick "Inspect" (this can have a different but similar name depending on your browser, such as "Inspect Element" or "Inspector"). This should open up a panel on the right side. Navigate to the `Elements` tab, where you will see the `Hello World!` text surrounded by some tags.
 
 We'll discuss what these tags mean shortly, but for now, you can just copy that structure into your html file.
 
@@ -68,7 +73,9 @@ You will end up with something like this:
 </html>
 ```
 
-> The `<html>` tag should enclose everything in the document, except for the `DOCTYPE` declaration. 
+> The `<html>` tag should enclose everything in the document, except for the `DOCTYPE` declaration.
+
+> HTML is _not_ whitespace sensitive. You can use whitespaces to format HTML to make it more readable.
 
 ## Building up the page
 
@@ -96,11 +103,13 @@ You will need to add a `<title>My Hello App</title>` element nested under `<head
 
 ### Adding Text and Headings
 
-> All the following content should be added under the `<body>` element, which aggregates all the content on the HTML page.
+> The [`<body>`](https://www.w3schools.com/tags/tag_body.asp) element contains all the contents of an HTML document, and is a direct child of `<html>`. 
+
+Currently, your `<body>` element contains only simple text, but all the content that you add to your page (e.g. images, paragraphs, links) should be added under this element.
 
 Text is one of the most relevant types of content that can be added to a web page. You can add plain text to several HTML elements, which will transform it accordingly.
 
-[Headings](https://www.w3schools.com/html/html_headings.asp) are used to differentiate between different types of texts, offer a logical structuring of the web page, and can be used to provide a common style for your text elements (e.g. fonts, colours, sizes). Essentially, they act as titles and subtitles. They are denoted by `<h1>`, `<h2>`, to `<h6>` tags. By default, the text size is the largest with `h1`, and the smallest with `h6`, but this can be changed.
+[Headings](https://www.w3schools.com/html/html_headings.asp) are used to differentiate between different types of texts, offer a logical structuring of the web page, and can be used to provide a common style for your text elements (e.g. fonts, colours, sizes). Essentially, they act as titles and subtitles. They are denoted by `<h1>`, `<h2>`, ... up to `<h6>` tags. By default, the text size is the largest with `h1`, and the smallest with `h6`, but this can be changed.
 
 There's a whole theory behind efficiently using headings for [Search Engine Optimization (SEO)](https://developers.google.com/search/docs/fundamentals/seo-starter-guide), but some rules of thumb are:
 - Use `<h1>` for the page's title. You shouldn't have more that 1 or 2 `<h1>` tags, and they should contain keywords relevant for your page
@@ -389,7 +398,7 @@ _CRUD_ stands for Create, Read, Update, Delete, which are the four basic operati
 
 Thinking of your application so far, you have only implemented the ability to Read information upon visiting the `/` path. Sometimes this is enough for simple websites that deliver static content. For more interactive user experiences, however, you will likely need to implement other operations.
 
-_HTTP_ (HyperText Transfer Protocol) stands at the foundation of data communication over the internet, as it standardises the way hypertext documents are served to clients. It is a  stateless request-response protocol based on client-server communication. A typical client could be a browser, which then communicates with servers that deliver HTML files or other media resources.
+_HTTP_ (HyperText Transfer Protocol) stands at the foundation of data communication over the internet, as it standardises the way documents are served to clients. It is a  request-response protocol based on client-server communication. A typical client could be a browser, which then communicates with servers that deliver HTML files or other media resources.
 
 HTTP defines several operations through which the client communicates with the server. Four of the most common ones are:
 - `GET`: Is used to request information from the client. It is similar to a Read operation of CRUD, and is intended to have no side effects on the server side.
@@ -419,7 +428,7 @@ Refresh the page to check that everything is still working.
 
 ### HTTP Response Codes
 
-Since HTTP is a stateless, request-response protocol, the server needs to communicate to the client the status of the request (e.g. whether it was successful or not), in order for the client to interpret the server's response correctly.
+Since HTTP is a request-response protocol, the server needs to communicate to the client the status of the request (e.g. whether it was successful or not), in order for the client to interpret the server's response correctly.
 
 HTTP uses response codes to communicate this. They are composed of three digits, 1xx-5xx, where the first digit signifies the class of responses:
 - 1xx informational response - the request was received by the server
@@ -434,7 +443,7 @@ Refresh the page and check out Flask's output in the VS Code terminal.
 
 - What status code is displayed for the `/` endpoint?
 - What status code is displayed for the image?
-- Why is the image status code different from the page's? You can check out [here](https://www.rfc-editor.org/rfc/rfc9110.html#name-304-not-modified) an explanation for the status code that you should be seeing.
+- Why is the image status code different from the page's? You can check out [here](https://www.rfc-editor.org/rfc/rfc9110.html#name-overview-of-status-codes) an explanation for the status code that you should be seeing.
 
 Try changing the HTTP operation in your code and refresh the page. What status code are you seeing now and why?
 
@@ -449,7 +458,7 @@ Try changing the HTTP operation in your code and refresh the page. What status c
 
 ### Exercise 8.14
 
-You will need to add a new endpoint to your application, mapping a route called `/add`. This will be responsible for adding an animal name to the existing list. The method should have a single parameter, which you can assume to be string.
+You will need to add a new endpoint to your application, mapping a route called `/add`. This will be responsible for adding an animal name to the existing list. The method should have a single parameter, which you can assume to be a string.
 
 Consider the following questions:
 - Which HTTP method should you use for this endpoint? The requests will be made with the purpose of adding data to a "database"
@@ -462,7 +471,7 @@ Once you've come up with your answers, double-check with the answers below:
 - While we could use any HTTP operation, `POST` is the most appropriate one considering the conventions
 - Here are two ways of solving the problem:
     - Return the same filled-in template after adding the animal to the list, so the response code should be `200`. However, you will notice that, after calling this endpoint, the URL will remain `/add` instead of `/`. This can be problematic, because when refreshing the page, the form could be resubmitted, resulting in additional POST requests with unintended consequences!
-    - Return a redirect to the `/` endpoint, so the response code would be one of `3xx`. This will instruct the broser to make a request to the URL for `/`. 
+    - Return a redirect to the `/` endpoint, so the response code would be one of `3xx`. This will instruct the browser to make a request to the URL for `/`.
 
 If you have a different solution for the second point, feel free to use it as long as it fits the requirements.
 
