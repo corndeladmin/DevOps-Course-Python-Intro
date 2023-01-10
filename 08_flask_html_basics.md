@@ -44,7 +44,7 @@ Since HTML is a markup language, it is possible to alter the way the text is str
 
 You can think of an HTML page as a document, which is composed of several elements. Tags are used to mark the beginning and end of an element, and are usually pre-defined keywords enclosed in angle brackets. To denote the start of an element, you would see a tag such as `<tag>`, and to mark where the element ends, the tag is accompanied by a forward slash before the keyword, such as `</tag>`.
 
-> Many elements allow other elements nested inside them, called _child nodes_. Child nodes refer to those above them as _parent nodes_.
+> Many elements allow other elements to be nested inside them (referred to as _child nodes_). Child nodes refer to those above them as _parent nodes_.
 
 > Tags are not displayed by the browser. Instead, they instruct the browser on _how_ to display the HTML element.
 
@@ -103,7 +103,7 @@ You will need to add a `<title>My Hello App</title>` element nested under `<head
 
 ### Adding Text and Headings
 
-> The [`<body>`](https://www.w3schools.com/tags/tag_body.asp) element contains all the contents of an HTML document, and is a direct child of `<html>`. 
+> The [`<body>`](https://www.w3schools.com/tags/tag_body.asp) element holds all the contents of an HTML document and is a direct child of `<html>`. 
 
 Currently, your `<body>` element contains only simple text, but all the content that you add to your page (e.g. images, paragraphs, links) should be added under this element.
 
