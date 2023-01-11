@@ -57,7 +57,7 @@ As an example:
 
 ### Exercise 8.2
 
-Let's inspect how the browser views our document. Right click anywhere on the page and then pick "Inspect" (this can have a different but similar name depending on your browser, such as "Inspect Element" or "Inspector"). This should open up a panel on the right side. Navigate to the `Elements` tab, where you will see the `Hello World!` text surrounded by some tags.
+Let's inspect how the browser views our document. Right click anywhere on the page and then pick "Inspect" (this can have a different but similar name depending on your browser, such as "Inspect Element"). This should open up a panel on the right side. Navigate to the `Elements` (or `Inspector`) tab, where you will see the `Hello World!` text surrounded by some tags.
 
 We'll discuss what these tags mean shortly, but for now, you can just copy that structure into your html file.
 
@@ -75,7 +75,7 @@ You will end up with something like this:
 
 > The `<html>` tag should enclose everything in the document, except for the `DOCTYPE` declaration.
 
-> HTML is _not_ whitespace sensitive. You can use whitespaces to format HTML to make it more readable.
+> HTML is _not_ whitespace sensitive. You can use whitespace to format HTML to make it more readable.
 
 ## Building up the page
 
@@ -103,7 +103,7 @@ You will need to add a `<title>My Hello App</title>` element nested under `<head
 
 ### Adding Text and Headings
 
-> The [`<body>`](https://www.w3schools.com/tags/tag_body.asp) element holds all the contents of an HTML document and is a direct child of `<html>`. 
+> The [`<body>`](https://www.w3schools.com/tags/tag_body.asp) element holds the contents of an HTML document and is a direct child of `<html>`. 
 
 Currently, your `<body>` element contains only simple text, but all the content that you add to your page (e.g. images, paragraphs, links) should be added under this element.
 
@@ -142,9 +142,15 @@ Images and links are vital for a site's appearance and functionality. You can ad
 
 So far the elements and tags were fairly simple, but these 2 are a bit more complex: they do not work properly unless you also add _attributes_ to them.
 
-> HTML attributes act similar to variables, and are used by elements in order to enable certain functionality. They are key/value pairs added to the start tag of an element, with the value being enclosed in quotes. 
+> HTML attributes act similar to variables, and are used by elements in order to enable certain functionality. They are usually key/value pairs added to the start tag of an element, with the value being enclosed in quotes.
+
+For instance, the `<img>` element can have the `alt` attribute, which represents the text that is displayed when the image cannot be loaded. You could create an image element like: `<img alt="Alt text for image">`.
 
 Each element has a list of attributes that it supports, and each attribute can accept a certain type of value, such as strings, numbers, or pre-defined keywords.
+
+> Attributes can also be boolean. If the attribute is present in the element, its value is `true`. If the attribute is omitted from the element, its value is `false`.
+
+For instance, an `<input>` element (e.g. text fields, dropdowns) can be enabled or disabled. `<input disabled>` is rendered as a disabled field, but `<input>` (with the `disabled` field omitted) is active (enabled).
 
 ### Exercise 8.5: Adding an image and a link
 
@@ -220,7 +226,7 @@ Let's think of what happens when you access a site over the internet:
 - If the resource exists, the server responds with a GET Response, which can have many forms. For now, let's say it's an HTML page.
 - The browser receives the response and displays it. If it's an HTML page, it will render the HTML.
 
-The current HTML document is only accessible from your filesystem. Ideally, however, the page to be accessible from the internet, or at least from your machine at a specific URL.
+The current HTML document is only accessible from your filesystem. Ideally, however, the page should be accessible from the internet, or at least from your machine at a specific URL.
 
 The next goal is to use an existing web server, make it run locally, and customize it in Python to serve your page when accessing its URL in the browser.
 
@@ -235,18 +241,18 @@ Let's create a new folder called `zoo_app` and open it in VS Code.
 ### Exercise 8.7: Adding dependencies
 
 As in previous exercises, you will use `poetry` to manage python packages
-- Run the command to initialize poetry, `poetry init`. You can use default settings
+- Run the command to initialize poetry: `poetry init`. You can use the default options when answering the prompts.
 - In order to use a virtual environment local to your project, you will need to create a new file called `poetry.toml` in the root of your project, and add the following two lines to it:
 ```python
 [virtualenvs]
 create = true
 in-project = true
 ```
-- Run the command to add `flask` to the list of dependencies
+- Run the command to add `flask` to the list of dependencies: `poetry add flask`.
 
 ### Minimal flask application
 
-Let's start by creating an `app.py` file (it's important to use this name!), and paste the following:
+Let's start by creating an `app.py` file (it's important to use this filename!), and paste the following:
 
 ```python
 import flask
@@ -260,7 +266,7 @@ def hello_world():
 
 - The first line imports the `flask` module
 - Then, it call the Flask constructor with the parameter `__name__` to obtain an instance of a flask app. `__name__` is a special variable in python that refers to the current module.
-- Then, it adds a _route_ in the app, available at the `/` path. This means that, when you access the application on `/`, the `hello_world()` function will be executed.
+- Then, it adds a _route_ in the app, available at the `/` path. This means that, when you access the application on `/`, the `hello_world()` function will be executed. The `/` path refers to the homepage, or the base URL where the application can be accessed from (e.g. `http://127.0.0.1:5000/`).
 
 > The function name can be chosen freely since your application's users will not see it, and there isn't a convention that needs to be followed as long as it's a valid python name. However, in practice, it's useful to choose a brief name that describes what the function does.
 
@@ -276,12 +282,15 @@ Running on http://127.0.0.1:5000
 
 If you visit this in a browser, or `http://localhost:5000`, you should see "Hello World!".
 
+> `localhost` refers to the standard domain name of the loopback address. By default, the IPv4 loopback address is `127.0.0.1`.
+
 ### Using your previous HTML file
 
 Since you have already written an HTML file, it would be nice to serve that instead of a hardcoded HTML string.
 
 You will need to:
 - Create a new folder called `templates` in your project root, and place the HTML file there
+    - We'll find out why this folder is called `templates` later
 - Create a new folder called `static` in your project root, and place the animal image there
 
 > These folder names are important! Flask will look, by default, in a "templates" folder for HTML files or templates, and in a "static" folder for static files. While this behaviour can be changed, for now it will be sufficient.
@@ -293,15 +302,15 @@ Your file structure should look like this:
     - helloworld.html
 - static/
     - alpaca.png
-- poetry files
+- other poetry-related files
 
 ```
 
-### Exercise 8.8: Serving the template
+### Exercise 8.8: Serving the HTML file
 
 Even though you have placed everything in the relevant folders, you haven't yet changed the `hello_world()` function, so you will still get "Hello World!" when visiting the site.
 
-You will need that function to return, instead, the return value of `flask.render_template` or `flask.templating.render_template`. If you're not sure what parameters to use when calling these functions, try to `Ctrl + Left Click` on the function in VS Code and see if the flask documentation helps.
+You will need that function to return your HTML file instead (as a string). Flask provides the [`flask.render_template`](https://flask.palletsprojects.com/en/2.2.x/api/?highlight=render_template#flask.render_template) function to make this easier for you. For now you just need to provide the filename of the HTML document as an argument to this function.
 
 If you refresh the page in your browser and everything is working correctly, you should see a page similar to what you built previously, but with the image not loading.
 
@@ -314,7 +323,7 @@ app = flask.Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return flask.templating.render_template("helloworld.html")
+    return flask.render_template("helloworld.html")
 ```
 </details>
 
@@ -338,20 +347,22 @@ Both `./static/alpaca.png` and `static/alpaca.png` should work.
 
 Your app can now serve static pages, but if you need to deal with dynamic content such as inputs and forms, this is not enough. Let's explore how to change the animal list that is currently hardcoded into the HTML file to make it dynamic.
 
-Flask has can use a powerful mechanism called _templating_. In this context, a template is an HTML file in which you can embed variables, expressions, conditionals, loops or others.
+Flask has can use a powerful mechanism called _templating_. In this context, a template is an HTML file in which you can embed variables, expressions, conditionals, loops and other logic.
 
-> The idea of templating is available in many programming languages and tech stacks. While the name can vary, the main concepts are very similar.
+> The notion of templating is available to many programming languages and tech stacks. While the terminology can vary, the main concepts are very similar.
 
 The templating language that Flask uses is based on Jinja, which allows intertwining code with HTML. You can find more information about it [here](https://jinja.palletsprojects.com/en/3.1.x/templates/).
 
 Jinja has a few specific delimiters:
 - `{% ... %}` is used for Statements (e.g. for loops, if cases)
     - Statements are usually followed by another `{% end<statement> %}` (e.g. `{% endfor %}`), to mark where the statement's block ends
-- `{{ ... }}` is used for Expressions or variables
+- `{{ ... }}` is used for Expressions or Variables
 
 ### Exercise 8.10
 
-Create a list (you could call it "animals") of three animal names in `app.py`. This list should live as long as the server is running, so where should you place it? What data type should you use to store the animal names?
+Create a list (you could call it "animals") of three animal names in `app.py`. This list should live as long as the server is running.
+
+Where should you place the list?
 
 <details markdown="1"><summary>Click here to view the solution</summary>
 
@@ -376,7 +387,12 @@ You will need to change the way you call `render_template`, so that the template
 render_template("helloworld.html", animals_in_template=animals_in_app_py)
 ```
 
-Will allow you to access the variable named `animals_in_template` in the Jinja template, with the value `animals_in_app_py`. You can also pick the same name for these 2 variables, such as simply `animals`.
+Will allow you to access the variable named `animals_in_template` in the Jinja template, with the value `animals_in_app_py`. For the sake of simplicity people often use the same value for both of these variable names. In our case we would write:
+
+```python
+render_template("helloworld.html", animals=animals)
+```
+
 
 <details markdown="1"><summary>Click here to view the solution</summary>
 
@@ -394,11 +410,11 @@ You will need to use a for loop, to iterate through the animal list and display 
 
 ## CRUD, HTTP Methods, inputs and forms
 
-_CRUD_ stands for Create, Read, Update, Delete, which are the four basic operations that a web application would perform.
+_CRUD_ stands for _Create, Read, Update, Delete_, which are the four basic operations that a web application would perform.
 
 Thinking of your application so far, you have only implemented the ability to Read information upon visiting the `/` path. Sometimes this is enough for simple websites that deliver static content. For more interactive user experiences, however, you will likely need to implement other operations.
 
-_HTTP_ (HyperText Transfer Protocol) stands at the foundation of data communication over the internet, as it standardises the way documents are served to clients. It is a  request-response protocol based on client-server communication. A typical client could be a browser, which then communicates with servers that deliver HTML files or other media resources.
+_HTTP_ (HyperText Transfer Protocol) stands at the foundation of data communication over the internet, as it standardises the way documents are served to clients. It is a request-response protocol based on client-server communication. A typical client could be a browser, which then communicates with servers that deliver HTML files or other media resources.
 
 HTTP defines several operations through which the client communicates with the server. Four of the most common ones are:
 - `GET`: Is used to request information from the client. It is similar to a Read operation of CRUD, and is intended to have no side effects on the server side.
@@ -406,13 +422,13 @@ HTTP defines several operations through which the client communicates with the s
 - `PUT`/`PATCH`: Used for updating resources.
 - `DELETE`: Used for deleting resources.
 
-> While the standard dictates that HTTP methods behave in a certain expected way, the server's code ultimately decides what its methods do. Even so, adhering to these conventions is most of the times desiarable.
+> While the standard dictates that HTTP methods behave in a certain expected way, the server's code ultimately decides what its methods do. Even so, it's generally good practice to follow these conventions.
 
 This is just a very brief introduction to HTTP and CRUD. These topics will be discused in more detail in further modules.
 
 ### Exercise 8.12
 
-Although you haven't explicitly mentioned it in the code, while communicating with the `/` route of your application through the browser, one of the HTTP methods has to be used. Which of the above is most likely to be used?
+Although you haven't explicitly mentioned it in the code, one of the HTTP methods has to be used when calling routes of your application through the browser. Can you guess which method is being used to call your current route?
 
 <details markdown="1"><summary>Hint</summary>
 While the Flask application is running, you can refresh the page and check the terminal in VS Code. The method used, along with the path requested, should appear in the log.
@@ -421,7 +437,7 @@ While the Flask application is running, you can refresh the page and check the t
 After you've figured out the HTTP method, try setting it explicitly in the code. You can do that by adding a `methods` parameter to the app routing, like this:
 
 ```python
-@app.route("/", methods=['HTTP_METHOD'])
+@app.route("/", methods=['HTTP_METHOD_GOES_HERE'])
 ```
 
 Refresh the page to check that everything is still working.
