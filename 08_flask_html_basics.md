@@ -387,7 +387,7 @@ You will need to change the way you call `render_template`, so that the template
 render_template("helloworld.html", animals_in_template=animals_in_app_py)
 ```
 
-Will allow you to access the variable named `animals_in_template` in the Jinja template, with the value `animals_in_app_py`. For the sake of simplicity people often use the same value for both of these variable names. In our case we would write:
+Will allow you to access the variable named `animals_in_template` in the Jinja template, with the value `animals_in_app_py`. For the sake of simplicity people often use the same name for both of these variables. In our case we would write:
 
 ```python
 render_template("helloworld.html", animals=animals)
