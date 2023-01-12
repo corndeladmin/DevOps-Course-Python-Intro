@@ -25,6 +25,7 @@ Follow the link to Chapter 1 to get started.
 - [Chapter 5: Control Flow](./05_control_flow.md)
 - [Chapter 6: Packages, Modules and Imports](./06_packages_and_imports.md)
 - [Chapter 7: Classes](./07_classes.md)
+- [Chapter 8: Flask and HTML Basics](./08_flask_html_basics.md)
 
 ## Exercises
 
