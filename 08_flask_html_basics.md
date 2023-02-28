@@ -354,9 +354,11 @@ Flask has can use a powerful mechanism called _templating_. In this context, a t
 The templating language that Flask uses is based on Jinja, which allows intertwining code with HTML. You can find more information about it [here](https://jinja.palletsprojects.com/en/3.1.x/templates/).
 
 Jinja has a few specific delimiters:
+<!-- {% raw %} -->
 - `{% ... %}` is used for Statements (e.g. for loops, if cases)
     - Statements are usually followed by another `{% end<statement> %}` (e.g. `{% endfor %}`), to mark where the statement's block ends
 - `{{ ... }}` is used for Expressions or Variables
+<!-- {% endraw %} -->
 
 ### Exercise 8.10
 
@@ -398,6 +400,7 @@ render_template("helloworld.html", animals=animals)
 
 You will need to use a for loop, to iterate through the animal list and display it within a `<li>`:
 
+<!-- {% raw %} -->
 ```html
 <ul>
     {% for animal in animals %}
@@ -405,6 +408,7 @@ You will need to use a for loop, to iterate through the animal list and display 
     {% endfor %}
 </ul>
 ```
+<!-- {% raw %} -->
 
 </details>
 
@@ -565,6 +569,8 @@ Your application should:
 <details markdown="1"><summary>For reference, here is a sample solution:</summary>
 
 helloworld.html:
+
+<!-- {% raw %} -->
 ```html
 <!DOCTYPE html>
 <html>
@@ -590,6 +596,7 @@ helloworld.html:
 	</body>
 </html>
 ```
+<!-- {% endraw %} -->
 
 app.py file:
 
