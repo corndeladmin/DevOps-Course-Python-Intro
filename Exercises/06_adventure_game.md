@@ -93,4 +93,4 @@ If you are feeling very ambitious, you could install and use the [Pygame package
 
 ## Getting feedback
 
-If you would like any feedback on what you've written, then please feel free to share your work with the tutors via Slack or email (Team-AcademyDevOpsDelivery@softwire.com).
+If you would like any feedback on what you've written, then please feel free to share your work with the tutors via Slack or email (DevOpsDelivery@corndel.com).
