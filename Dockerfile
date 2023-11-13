@@ -1,12 +1,8 @@
-FROM python:3.10
-
-RUN apt-get update && apt-get install ruby-full build-essential -y
+FROM ruby:2.7-alpine
+RUN apk update && apk add alpine-sdk
+RUN gem update --system
 RUN gem install jekyll bundler
 WORKDIR /srv/jekyll
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
-
-COPY . .
-COPY entrypoint.sh ./entrypoint.sh
-ENV PORT=4000
-ENTRYPOINT ["bash", "entrypoint.sh"]
+ENTRYPOINT ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0", "--livereload", "--force_polling"]
